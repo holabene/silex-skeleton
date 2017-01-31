@@ -1,0 +1,13 @@
+name             'mycookbook'
+maintainer       'YOUR_NAME'
+maintainer_email 'YOUR_EMAIL'
+license          'All rights reserved'
+description      'Installs/Configures mycookbook'
+long_description 'Installs/Configures mycookbook'
+version          '0.1.0'
+
+depends 'apt', '~> 5.0.1'
+depends 'apache2'
+depends 'mysql', '~> 8.2.0'
+depends 'php', '~> 2.2.0'
+depends 'composer', '~> 2.5.2'
