@@ -1,6 +1,6 @@
 {
-    "name": "fabpot/silex-skeleton",
-    "description": "A pre-configured skeleton for the Silex microframework",
+    "name": "holabene/silex-skeleton",
+    "description": "A pre-configured skeleton for the Silex microframework based on fabpot/silex-skeleton",
     "license": "MIT",
     "type": "project",
     "require": {
@@ -21,20 +21,20 @@
         "symfony/security": "~2.8|3.0.*",
         "symfony/translation": "~2.8|3.0.*",
         "symfony/twig-bridge": "~2.8|3.0.*",
-        "symfony/validator": "~2.8|3.0.*"
+        "symfony/validator": "~2.8|3.0.*",
+        "saxulum/saxulum-doctrine-orm-manager-registry-provider": "^3.1",
+        "symfony/doctrine-bridge": "^3.2",
+        "doctrine/migrations": "^1.5"
+    },
+    "require-dev": {
+        "doctrine/data-fixtures": "^1.2"
     },
     "autoload": {
         "psr-0": { "": "src/" }
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.0.x-dev"
-        }
-    },
     "scripts": {
-        "run": [
-            "echo 'Started web server on http://localhost:8888'",
-            "php -S localhost:8888 -t web"
-        ]
+      "post-install-cmd": [
+        "php vendor/bin/doctrine migrations:migrate --no-interaction"
+      ]
     }
 }

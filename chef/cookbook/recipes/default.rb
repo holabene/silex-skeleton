@@ -6,3 +6,8 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+
+package "utilities" do
+  package_name %w(unzip)
+  action :install
+end

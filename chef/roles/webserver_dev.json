@@ -5,6 +5,7 @@
   "chef_type": "role",
   "run_list": [
     "recipe[apt]",
+    "recipe[mycookbook::default]",
     "recipe[mycookbook::app]",
     "recipe[mycookbook::database_dev]",
     "recipe[mycookbook::deploy_dev]"
