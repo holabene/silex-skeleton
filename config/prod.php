@@ -33,3 +33,5 @@ $app['orm.em.options'] = [
         // custom doctrine types
     ]
 ];
+
+include __DIR__.'/local.php';

@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * Local config template
+ *
+ * This config will override production configuration
+ * Use this file to store sensitive information or generated config
+ * or other configuration specific to local setup
+ * e.g database configuration, api keys, etc
+ */
