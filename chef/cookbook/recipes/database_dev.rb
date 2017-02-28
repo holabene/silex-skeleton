@@ -12,9 +12,7 @@ mysql_service "default" do
   action [:create, :start]
 end
 
-mysql_client "default" do
-  action :create
-end
+mysql_client "default"
 
 script "create_database" do
   interpreter "bash"

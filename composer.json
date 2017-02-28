@@ -24,7 +24,8 @@
         "saxulum/saxulum-doctrine-orm-manager-registry-provider": "^3.1",
         "symfony/twig-bridge": "^3.2",
         "symfony/doctrine-bridge": "^3.2",
-        "doctrine/migrations": "^1.5"
+        "doctrine/migrations": "^1.5",
+        "irozgar/gulp-rev-versions-bundle": "^1.0"
     },
     "require-dev": {
         "doctrine/data-fixtures": "^1.2"
@@ -34,7 +35,7 @@
     },
     "scripts": {
       "post-install-cmd": [
-        "php vendor/bin/doctrine migrations:migrate --no-interaction"
+        "php vendor/bin/doctrine migrations:migrate --no-interaction --allow-no-migration"
       ]
     }
 }

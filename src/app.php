@@ -8,6 +8,7 @@ use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
 use Dflydev\Provider\DoctrineOrm\DoctrineOrmServiceProvider;
 use Saxulum\DoctrineOrmManagerRegistry\Provider\DoctrineOrmManagerRegistryProvider;
+use Irozgar\GulpRevVersionsBundle\Asset\GulpRevVersionStrategy;
 
 $app = new Application();
 $app->register(new ServiceControllerServiceProvider());
@@ -23,6 +24,11 @@ $app['twig'] = $app->extend('twig', function ($twig, $app) {
     // add custom globals, filters, tags, ...
 
     return $twig;
+});
+
+// using gulp-rev so we override assets.strategy_factory from Silex\Provider\AssetServiceProvider
+$app['assets.strategy_factory'] = $app->protect(function ($version, $format) use ($app) {
+    return new GulpRevVersionStrategy(__DIR__.'/..', 'var/rev-manifest.json');
 });
 
 return $app;

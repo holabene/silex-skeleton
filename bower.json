@@ -1,0 +1,22 @@
+{
+  "name": "silex-skeleton",
+  "description": "silex app",
+  "main": "index.js",
+  "authors": [
+    "Benedict <benedict@phpdevel.net>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/holabene/silex-skeleton",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "font-awesome": "^4.7.0"
+  }
+}
