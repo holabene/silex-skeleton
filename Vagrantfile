@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "bento/ubuntu-16.04"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -77,11 +77,13 @@ Vagrant.configure("2") do |config|
   # Using vagrant berkshelf plugin
   # - Install ChefDK https://downloads.chef.io/chef-dk/
   # - $ vagrant plugin install vagrant-berkshelf
-  config.berkshelf.berksfile_path = "chef/cookbook/Berksfile"
   config.berkshelf.enabled = true
 
   config.vm.provision "chef_solo" do |chef|
-    chef.roles_path = "chef/roles"
-    chef.add_role("webserver_dev")
+    chef.add_recipe "apt"
+    chef.add_recipe "app::default"
+    chef.add_recipe "app::webserver"
+    chef.add_recipe "dev::database"
+    chef.add_recipe "dev::deploy"
   end
 end
