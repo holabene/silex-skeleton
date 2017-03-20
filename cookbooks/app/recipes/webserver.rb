@@ -18,6 +18,12 @@ end
 
 apache_config 'php7.0-cgi'
 
+apache_module 'mpm_event' do
+  enable false
+end
+
+apache_module 'mpm_prefork'
+
 package 'php_extensions' do
   package_name %w(php-apcu php7.0-mysql php7.0-json php7.0-intl php7.0-curl php7.0-gd)
   notifies :reload, 'service[apache2]', :delayed

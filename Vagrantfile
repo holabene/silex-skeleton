@@ -84,6 +84,7 @@ Vagrant.configure("2") do |config|
     chef.add_recipe "app::default"
     chef.add_recipe "app::webserver"
     chef.add_recipe "dev::database"
+    chef.add_recipe "dev::debug"
     chef.add_recipe "dev::deploy"
   end
 end
