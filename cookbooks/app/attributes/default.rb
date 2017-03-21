@@ -1,6 +1,9 @@
 # app config
-default['app']['install_path'] = '/srv/app'
-default['app']['db_name'] = 'app'
+default['app']['install_path'] = '/var/www/app'
+default['app']['db_name'] = ''
+default['app']['db_host'] = ''
+default['app']['db_user'] = ''
+default['app']['db_password'] = ''
 
 # https://nodejs.org/dist/v7.6.0/
 # https://nodejs.org/dist/v7.6.0/SHASUMS256.txt

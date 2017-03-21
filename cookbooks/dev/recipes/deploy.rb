@@ -25,6 +25,13 @@ execute 'gulp' do
   command 'gulp'
 end
 
+template "#{node['app']['install_path']}/config/local.php" do
+  cookbook 'app'
+  source 'local.php.erb'
+  variables app: node['app']
+  not_if { File.exist?("#{node['app']['install_path']}/config/local.php") }
+end
+
 composer_project node['app']['install_path'] do
   dev true
   prefer_dist false
