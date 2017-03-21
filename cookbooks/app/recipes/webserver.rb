@@ -33,12 +33,6 @@ execute 'npm_cache_clean' do
   command 'npm cache clean'
 end
 
-nodejs_npm 'bower'
-
-link '/usr/local/bin/bower' do
-  to '/usr/local/nodejs-binary/bin/bower'
-end
-
 nodejs_npm 'gulp-cli'
 
 link '/usr/local/bin/gulp' do

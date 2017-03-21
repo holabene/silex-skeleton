@@ -15,11 +15,6 @@ execute 'npm_install' do
   command 'npm install'
 end
 
-execute 'bower_install' do
-  cwd node['app']['install_path']
-  command 'bower install --allow-root'
-end
-
 execute 'gulp' do
   cwd node['app']['install_path']
   command 'gulp'

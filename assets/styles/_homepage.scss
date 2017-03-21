@@ -1,0 +1,32 @@
+#homepage1 {
+  background-color: #602870;
+  height: 100vh;
+  position: relative;
+  overflow-y: hidden;
+
+  .navbar {
+    background-color: transparent;
+  }
+
+  .jumbotron {
+    background-color: transparent;
+    color: #fff;
+  }
+}
+
+#homepage2 {
+  background-color: #709c34;
+  height: 100vh;
+  position: relative;
+  overflow-y: hidden;
+}
+
+#homepage3 {
+  background-color: #fff;
+  min-height: 800px;
+}
+
+#homepage4 {
+  background-color: #333;
+  min-height: 300px;
+}

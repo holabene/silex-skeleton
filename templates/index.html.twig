@@ -1,5 +1,34 @@
 {% extends "layout.html.twig" %}
 
+{% block body %}<body data-spy="scroll" data-target="#navbar-front" style="position: relative;">{% endblock %}
+
 {% block content %}
-    Welcome to your new Silex Application!
+<header id="homepage1">
+  {% include "navbar_front.html.twig" %}
+
+  <div class="container pt-5">
+    <div class="jumbotron jumbotron-fluid mt-5">
+      <div class="row">
+        <div class="col-sm-6">
+          <h1 class="display-3">Skeleton App</h1>
+          <p class="lead">Starter project based on Silex PHP framework to get your project up and running faster.</p>
+
+          <ul>
+            <li>Landing page</li>
+            <li>CMS</li>
+            <li>REST API</li>
+            <li>Develop on Vagrant, deploy on AWS</li>
+          </ul>
+          <a class="btn btn-outline-secondary btn-lg" href="#homepage2" data-scroll>See More Features</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<section id="homepage2">
+</section>
+<section id="homepage3">
+</section>
+<footer id="homepage4">
+</footer>
 {% endblock %}

@@ -17,7 +17,6 @@ var config = {
   assetsDir: 'assets',
   production: !!plugins.util.env.production,
   sourceMaps: !plugins.util.env.production,
-  bowerDir: 'bower_components',
   manifestFile: 'var/rev-manifest.json'
 };
 
@@ -26,8 +25,8 @@ var app = {};
 app.addStyle = function(paths, outputFilename) {
   var options = {
     loadPath: [
-      config.bowerDir+'/bootstrap-sass/assets/stylesheets',
-      config.bowerDir+'/font-awesome/scss'
+      'node_modules/bootstrap/scss',
+      'node_modules/font-awesome/scss'
     ],
     sourcemap: config.sourceMaps,
     precision: 10
@@ -42,6 +41,7 @@ app.addStyle = function(paths, outputFilename) {
     .pipe(plugins.rev())
     .pipe(plugins.if(config.sourceMaps, plugins.sourcemaps.write('.')))
     .pipe(gulp.dest('web'))
+    .pipe(plugins.livereload())
     .pipe(plugins.rev.manifest(config.manifestFile, {merge: true}))
     .pipe(gulp.dest('.'));
 };
@@ -55,20 +55,22 @@ app.addScript = function(paths, outputFilename) {
     .pipe(plugins.rev())
     .pipe(plugins.if(config.sourceMaps, plugins.sourcemaps.write('.')))
     .pipe(gulp.dest('web'))
+    .pipe(plugins.livereload())
     .pipe(plugins.rev.manifest(config.manifestFile, {merge: true}))
     .pipe(gulp.dest('.'));
 };
 
 app.copy = function(srcFiles, outputDir) {
   gulp.src(srcFiles)
-    .pipe(gulp.dest(outputDir));
+    .pipe(gulp.dest(outputDir))
+    .pipe(plugins.livereload());
 };
 
 gulp.task('styles', function() {
   del('web/css/*');
   app.addStyle([
-    config.assetsDir+'/styles/bootstrap-custom.scss',
-    config.assetsDir+'/styles/font-awesome-custom.scss',
+    config.assetsDir+'/styles/bootstrap_custom.scss',
+    config.assetsDir+'/styles/fontawesome_custom.scss',
     config.assetsDir+'/styles/style.scss'
   ], 'main.css');
 });
@@ -76,7 +78,10 @@ gulp.task('styles', function() {
 gulp.task('scripts', function() {
   del('web/js/*');
   app.addScript([
-    config.bowerDir+'/jquery/dist/jquery.js',
+    'node_modules/jquery/dist/jquery.js',
+    'node_modules/tether/dist/js/tether.js',
+    'node_modules/bootstrap/dist/js/bootstrap.js',
+    'node_modules/smooth-scroll/dist/js/smooth-scroll.js',
     config.assetsDir+'/scripts/main.js'
   ], 'site.js');
 });
@@ -84,12 +89,12 @@ gulp.task('scripts', function() {
 gulp.task('fonts', function() {
   del('web/fonts/*');
   app.copy([
-    config.bowerDir+'/bootstrap-sass/assets/fonts/bootstrap/*',
-    config.bowerDir+'/font-awesome/fonts/*'
+    'node_modules/font-awesome/fonts/*'
   ], 'web/fonts');
 });
 
 gulp.task('watch', function() {
+  plugins.livereload.listen();
   gulp.watch(config.assetsDir+'/styles/**/*.scss', ['styles']);
   gulp.watch(config.assetsDir+'/scripts/**/*.js', ['scripts']);
 });
