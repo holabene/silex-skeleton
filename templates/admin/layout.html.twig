@@ -1,0 +1,32 @@
+{% extends "layout.html.twig" %}
+
+{% block titletag %}<title>{% block title '' %} - Admin</title>{% endblock %}
+
+{% block styles %}
+<link href="{{ asset('css/admin.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block headscripts %}{% endblock %}
+
+{% block bodytag %}<body class="admin" data-spy="scroll" data-target=".admin-nav" style="position: relative;">{% endblock %}
+
+{% block layout %}
+<div class="container" id="{% block pageid %}{% endblock %}">
+  {% include "admin/navbar.html.twig" %}
+
+  <div class="row">
+    <div class="col-md-3 pt-3 bg-faded">
+      <div class="sidebar">
+        {% include "admin/menu.html.twig" %}
+      </div>
+    </div>
+    <div class="col-md-9 pt-3 pb-5">
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block bodyscripts %}
+<script src="{{ asset('js/admin.js') }}"></script>
+{% endblock %}

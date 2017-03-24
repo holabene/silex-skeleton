@@ -1,0 +1,28 @@
+/* list.js customization */
+@import 'variables';
+@import 'mixins/border-radius';
+@import 'mixins/hover';
+@import 'mixins/pagination';
+@import 'pagination';
+
+.sort {
+  &.asc {
+    .fa:before {
+      content: "\f0d8";
+    }
+  }
+  &.desc {
+    .fa:before {
+      content: "\f0d7";
+    }
+  }
+}
+
+.pagination {
+  li {
+    @extend .page-item;
+    .page {
+      @extend .page-link;
+    }
+  }
+}

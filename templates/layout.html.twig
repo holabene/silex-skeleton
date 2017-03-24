@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    {% block metatags %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    {% endblock %}
 
-    <title>{% block title '' %} - My Silex Application</title>
+    {% block titletag %}<title>{% block title '' %} - My Silex Application</title>{% endblock %}
 
+    {% block styles %}
     <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css">
+    {% endblock %}
 
+    {% block headscripts %}
     <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
@@ -21,10 +26,15 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
+    {% endblock %}
   </head>
-  {% block body %}<body>{% endblock %}
-    {% block content %}{% endblock %}
+  {% block bodytag %}<body>{% endblock %}
+    {% block layout %}
+      {% block content %}{% endblock %}
+    {% endblock %}
 
+    {% block bodyscripts %}
     <script src="{{ asset('js/site.js') }}"></script>
+    {% endblock %}
   </body>
 </html>

@@ -29,7 +29,8 @@ app.addStyle = function(paths, outputFilename) {
       'node_modules/font-awesome/scss'
     ],
     sourcemap: config.sourceMaps,
-    precision: 10
+    precision: 10,
+    scss: true
   };
 
   plugins.sass(paths, options).on('error', plugins.sass.logError)
@@ -68,15 +69,23 @@ app.copy = function(srcFiles, outputDir) {
 
 gulp.task('styles', function() {
   del('web/css/*');
+
   app.addStyle([
     config.assetsDir+'/styles/bootstrap_custom.scss',
     config.assetsDir+'/styles/fontawesome_custom.scss',
     config.assetsDir+'/styles/style.scss'
   ], 'main.css');
+
+  app.addStyle([
+    config.assetsDir+'/styles/bootstrap_custom.scss',
+    config.assetsDir+'/styles/fontawesome_custom.scss',
+    config.assetsDir+'/styles/admin.scss'
+  ], 'admin.css');
 });
 
 gulp.task('scripts', function() {
   del('web/js/*');
+
   app.addScript([
     'node_modules/jquery/dist/jquery.js',
     'node_modules/tether/dist/js/tether.js',
@@ -84,6 +93,15 @@ gulp.task('scripts', function() {
     'node_modules/smooth-scroll/dist/js/smooth-scroll.js',
     config.assetsDir+'/scripts/main.js'
   ], 'site.js');
+
+  app.addScript([
+    'node_modules/jquery/dist/jquery.js',
+    'node_modules/tether/dist/js/tether.js',
+    'node_modules/bootstrap/dist/js/bootstrap.js',
+    'node_modules/list.js/dist/list.js',
+    'node_modules/chart.js/dist/Chart.js',
+    config.assetsDir+'/scripts/admin.js'
+  ], 'admin.js');
 });
 
 gulp.task('fonts', function() {

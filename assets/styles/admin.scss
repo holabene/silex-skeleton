@@ -1,0 +1,19 @@
+/* admin */
+@import 'variables';
+@import 'listjs';
+
+.admin {
+  #navbar-top {
+    input, .btn-secondary {
+      background-color: $input-border-color;
+    }
+  }
+
+  .sidebar {
+    .nav-link {
+      .fa {
+        width: map-get(map-get($spacers, 4), x);
+      }
+    }
+  }
+}
