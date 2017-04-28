@@ -28,7 +28,8 @@
         "irozgar/gulp-rev-versions-bundle": "^1.0"
     },
     "require-dev": {
-        "doctrine/data-fixtures": "^1.2"
+        "doctrine/data-fixtures": "^1.2",
+        "phpunit/phpunit": "^6.1"
     },
     "autoload": {
         "psr-0": { "": "src/" }

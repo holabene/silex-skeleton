@@ -14,3 +14,6 @@ template "#{node['app']['install_path']}/.vimrc" do
   source 'vimrc.erb'
   variables install_path: node['app']['install_path']
 end
+
+# mb-string for phpunit
+package 'php7.0-mbstring'
