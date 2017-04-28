@@ -29,7 +29,8 @@
     },
     "require-dev": {
         "doctrine/data-fixtures": "^1.2",
-        "phpunit/phpunit": "^6.1"
+        "phpunit/phpunit": "^6.1",
+        "fzaninotto/faker": "^1.6"
     },
     "autoload": {
         "psr-0": { "": "src/" }
