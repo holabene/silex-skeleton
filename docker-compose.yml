@@ -16,6 +16,16 @@ services:
         container_name: php
         volumes:
             - .:/var/www/app
+        links:
+            - db
+        networks:
+            - net01
+    db:
+        image: mysql:latest
+        container_name: db
+        environment:
+            - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+            - MYSQL_DATABASE=app
         networks:
             - net01
 
